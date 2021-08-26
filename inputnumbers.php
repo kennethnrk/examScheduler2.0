@@ -44,8 +44,8 @@ if (mysqli_num_rows($res) > 0 || sizeof($files)>0) {
         </div>
     </div>
     
-    <form action="checkdetails.php" method="POST" enctype="multipart/form-data">
-    
+    <form action="inputdetails.php" method="POST" enctype="multipart/form-data">
+    <!--
     <div class="row toprow">
         <div class="col-md-6 label">
             List of Courses:
@@ -62,22 +62,16 @@ if (mysqli_num_rows($res) > 0 || sizeof($files)>0) {
             <input type="file"  name="students" id="students" required>
         </div>
     </div>
-    <div class="row">
+     -->
+     <div class="row toprow">
         <div class="col-md-6 label">
-            Number of Exam Halls:
+            Number of Departments:
         </div>
         <div class="col-md-6">
-            <input type="number" min="1" name="no_examhalls" id="no_examhalls" required>
+            <input type="number" min="1" max="5"name="no_depts" id="no_depts" required>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-6 label">
-            Number of Seats Per hall:
-        </div>
-        <div class="col-md-6">
-            <input type="number" min="1" name="no_seats" id="no_seats" required>
-        </div>
-    </div>
+       
 
     <div class="row">
         <div class="col-md-6 label">
@@ -102,6 +96,17 @@ if (mysqli_num_rows($res) > 0 || sizeof($files)>0) {
     <div class="field_error">
                         <?php echo $msg ?>
                      </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 label">
+            Choose Term
+        </div>
+        <div class="col-md-6">
+        <select name="term" id="term" required>
+            <option value="odd">ODD</option>
+             <option value="even">EVEN</option>
+        </select>
         </div>
     </div>
     <div class="row">
