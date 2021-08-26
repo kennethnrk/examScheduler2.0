@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+        
+#header
+{
+background-color: white;
+padding: 1%;
+top: 0;
+position: sticky;
+border-bottom: 3px solid rgb(232, 232, 232);
+}
+
+
+
+body
+{
+    background-color: rgb(245, 245, 245);
+    background-image: url(img/back.jpg); 
+    background-size: cover;
+    background-repeat: repeat;
+}
+
+*{
+margin:0;
+padding: 0;
+}
+.center{
+display: block;
+margin-right: auto;
+margin-left: auto;
+}
+
+
+
+input[type=text], input[type=password], input[type=number], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    }
+    input[type=submit] {
+    width: 100%;
+    background-color: #2bb673;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Raleway', sans-serif; font-weight: bold;font-size: 100%;
+    }
+    
+    input[type=submit]:hover {
+    background-color: #92dbb8;
+    color: white;
+    }
+    
+    
+    
+    #login_container
+    {
+    margin-top: 4%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40vw;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
+    border-top: 1vh solid #2bb673;
+    border-bottom: 1vh solid #2bb673;
+    
+    }
+
+    #login_h1
+    {
+        font-family: 'Ranchers', cursive; text-align: center;
+             color: #2bb673; background-color: white; font-size: 280%;
+             border-top-left-radius: 20px; border-top-right-radius: 20px; padding: 7px;
+             border-bottom: 0.5vh solid #2bb673;
+             margin-bottom: 1vh;
+    }
+    .label_div
+    {
+        padding: 4%; padding-top: 0; 
+             font-family: 'Raleway', sans-serif; font-weight: bold;font-size: 140%;
+             color: #2bb673;
+             ;
+    }
+    .field_error
+    {
+        color: red;
+    }
+    
+
+    @media screen and (max-width: 991px)
+    {
+        .imgmain
+    {
+        width: 80vw;
+    }
+    #login_container
+    {
+        width: 80vw;
+    }   
+       
+    }
+    @media screen and (min-width: 991px)
+    {
+    .imgmain
+    {
+        top: 0; width: 15vw;
+    }
+    #login_container
+    {
+        width: 40vw;
+    }
+    
+}

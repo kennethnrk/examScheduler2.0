@@ -1,0 +1,329 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+.logo
+{
+    padding-top: 5px;
+    width: 100%;
+    
+}
+body
+{
+    background-color: rgb(245, 245, 245);
+    background-image: url(img/back.jpg); 
+    background-size: cover;
+    background-repeat: repeat;
+}
+.navrow
+{
+    background: white;
+    border-bottom: 3px solid rgb(232, 232, 232);
+}
+
+.navlink
+{
+    display: block;
+    color: #2bb673;
+    padding: 30px 48px;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: larger;
+}
+.navlinkhead
+{
+    list-style-type: none;
+ margin: 0;
+ padding: 0;
+}
+.navlink:hover
+{
+    background-color: #2bb673;
+    color: white;
+}
+a:link { text-decoration: none; }
+
+
+a:visited { text-decoration: none; }
+
+
+a:hover { text-decoration: none; }
+
+
+a:active { text-decoration: none; }
+
+div.navlink, li.navlink
+{
+    padding: 0;
+    margin: 0;
+}
+
+@media screen and (max-width: 991px)
+{
+    .navrowpc
+    {
+        display: none;
+    }
+    
+    .navhead
+    {
+        border-bottom: 2px solid rgb(232, 232, 232);
+    }
+    .logo
+    {
+        width: 70%;
+    }
+   
+}
+@media screen and (min-width: 991px)
+{
+    .navrowmobile
+    {
+        display: none;
+    }
+    
+}
+.navbut
+    {   
+        display: block;
+        font-size: 5vh;
+        height: 7vh;
+    }
+#navlinkheadmobile
+{
+    display: none;
+}
+
+tr.course, table, tr.student
+    {
+        
+        width: 100%;
+        color: #2bb673;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: bold;
+        font-size: large;
+    }
+    th
+    {
+        
+        padding: 1%;
+        padding-right: 0px;
+        padding-bottom: 9px;
+    }
+
+    .course_no
+    {
+        width: 10%;
+        display: inline-block;
+    }
+    .course_name
+    {
+        width: 30%;
+        display: inline-block;
+    }
+    .course_sem
+    {
+        width: 25%;
+        display: inline-block;
+    }
+    .course_dur
+    {
+        width: 20%;
+        display: inline-block;
+    }
+    .course_mrks
+    {
+        width: 10%;
+        display: inline-block;
+    }
+    td
+    {
+        text-align: center;
+        padding: 1%;
+        padding-right: 0px;
+    }
+
+   
+
+input[type=text], input[type=password], input[type=number], select, input[type=date], input[type=file]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    }
+    input[type=submit] {
+    width: 30vw;
+    background-color: #2bb673;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: 0.5vh solid #2bb673;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Raleway', sans-serif; font-weight: bold;font-size: 100%;
+    font-size: large;
+    }
+    
+    input[type=submit]:hover {
+    background-color: white;
+    color: #2bb673;
+    }
+    .submitbutton
+    {
+        text-align: center;
+    }
+    
+    .cont
+    {
+        background-color: white;
+    
+    border-radius: 20px;
+    margin-top: 4vh;
+    }
+    
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: #2bb673;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 1vh;
+  }
+  
+  #myBtn:hover {
+    background-color: white;
+    color: #2bb673;
+    border: 0.4vh solid #2bb673;
+  }
+  .navbutlink
+  {
+      color: #2bb673;
+  }
+  .navbutlink:link, .navbutlink:visited, .navbutlink:hover, .navbutlink:active
+  { 
+      color: #2bb673;
+}
+
+  .heading
+  {
+        color: #c9a500;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: bold;
+        font-size: 5vh;
+        text-align: center;
+        padding-bottom: 3vh;
+  }
+  
+
+  .label
+  {
+    color: #2bb673;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: large;
+    padding: 12px 20px;
+    margin: 8px 0;
+    
+}
+.toprow
+{
+    padding-top: 4vh;
+    border-top: 0.4vh solid #2bb673;
+}
+.table_head
+{
+    border-bottom: 3px solid #2bb673;
+}
+.viewfullcourse
+{
+    text-align: left;
+    color: #2bb673;
+}
+.seatimg
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 20vh;
+}
+.seating_top
+{
+    
+    color: #c9a500;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 3.5vh;
+    padding: 3vh;
+    
+  
+}
+.seating_top_row1
+{
+    border-bottom: 0.5vh solid #c9a500;
+    padding-bottom: 3vh;
+    padding-top: 2vh;
+}
+.seating_top_row2
+{
+    
+    padding-top: 3vh;
+    padding-bottom: 2vh;
+}
+.maintop
+{
+    border-top: 0.5vh solid #c9a500;
+    color: #c9a500;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 3.5vh;
+    padding: 3vh;
+}
+.seatinfo
+{
+    border: 0.5vh solid #c9a500;
+    border-radius: 1vw;
+    margin-left: 1vh;
+    margin-right: 1vh;
+}
+.clear_data, a.clear_data:link, a.clear_data:visited, a.clear_data:hover, a.clear_data:active
+{
+    width: 40%;
+    background-color: #2bb673;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+    
+}
+.outer_clear
+{
+    padding: 4vh;
+    text-align: center;
+    width: 100%;
+}
+
+.field_error
+    {
+        color: red;
+        text-align: center;
+    }
+.foot
+{
+    padding: 1vw;
+    color: #2bb673;
+    text-align: center;
+    font-size: large;
+    
+}

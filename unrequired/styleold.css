@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+        
+#header
+{
+background-color: white;
+padding: 1%;
+top: 0;
+position: sticky;
+border-bottom: 3px solid rgb(232, 232, 232);
+}
+
+
+
+body{
+
+background-color: rgb(245, 245, 245); ;
+
+}
+
+*{
+margin:0;
+padding: 0;
+}
+.center{
+display: block;
+margin-right: auto;
+margin-left: auto;
+}
+
+.menu{
+float: left;
+background-color:white;
+width: 20%;
+height: 100%;
+position:fixed;
+font-family: 'Open Sans', sans-serif;
+font-weight: bold;
+font-size: large;
+}
+
+.container{
+float: right;
+width: 80%;
+           
+}
+
+.inner{
+width: 80%;
+padding: 30px;
+height: 100%;
+background-color: white;
+margin-left: auto;
+margin-right: auto;
+display: block;
+border-radius: 10px;
+margin-top: 30px;
+}
+
+ul {
+ list-style-type: none;
+ margin: 0;
+ padding: 0;
+}
+
+a li {
+display: block;
+color: rgb(0, 57, 131);
+padding: 10px 16px;
+
+}
+
+a{
+text-decoration: none;
+}
+
+a li:hover {
+background-color: rgb(0, 57, 131);
+color: white;
+}
+
+
+input[type=text], input[type=password], input[type=number], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    }
+    input[type=submit] {
+    width: 100%;
+    background-color: white;
+    color:#6daedb;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Raleway', sans-serif; font-weight: bold;font-size: 100%;
+    }
+    
+    input[type=submit]:hover {
+    background-color: #005087;
+    color: white;
+    }
+    
+    
+    
+    #container
+    {
+    margin-top: 4%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    background-color: #6daedb;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
+    
+    }
+
+    #login_h1
+    {
+        font-family: 'Ranchers', cursive; text-align: center;
+             color: #6daedb; background-color: white; font-size: 280%;
+             border-top-left-radius: 20px; border-top-right-radius: 20px; padding: 7px;
+    }
+    .label_div
+    {
+        padding: 4%; padding-top: 0; 
+             font-family: 'Raleway', sans-serif; font-weight: bold;font-size: 140%;
+             color: #005087;
+             ;
+    }
+    .field_error
+    {
+        color: red;
+    }
+    tr.course, table, tr.student
+    {
+        
+        width: 100%;
+        color: rgb(0, 57, 131);
+        font-family: 'Open Sans', sans-serif;
+        font-weight: bold;
+        font-size: large;
+    }
+    th
+    {
+        border-bottom: 3px solid rgb(0, 57, 131);
+        padding: 1%;
+        padding-right: 0px;
+        padding-bottom: 9px;
+    }
+
+    .course_no
+    {
+        width: 10%;
+        display: inline-block;
+    }
+    .course_name
+    {
+        width: 30%;
+        display: inline-block;
+    }
+    .course_sem
+    {
+        width: 25%;
+        display: inline-block;
+    }
+    .course_dur
+    {
+        width: 20%;
+        display: inline-block;
+    }
+    .course_mrks
+    {
+        width: 10%;
+        display: inline-block;
+    }
+    td
+    {
+        text-align: center;
+        padding: 1%;
+        padding-right: 0px;
+    }
+
+   
