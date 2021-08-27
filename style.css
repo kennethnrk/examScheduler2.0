@@ -325,5 +325,8 @@ input[type=text], input[type=password], input[type=number], select, input[type=d
     color: #2bb673;
     text-align: center;
     font-size: large;
-    
+    background-color: white;
+    margin-top: 10vh;
+    padding-left: 0;
+    padding-right: 0;
 }
