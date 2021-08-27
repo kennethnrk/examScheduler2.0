@@ -25,24 +25,24 @@ else
         </div>
     </div>
 <?php
-for($i=1; $i<=$no_depts; $i++)
+for($i=0; $i<$no_depts; $i++)
 {
 ?>
 
     <div class="row heading toprow">
-        Department <?php echo $i; ?>
+        Department <?php echo $i+1; ?>
     </div>
     <div class="row toprow">
         <div class="col-md-6 label">
             Select Department
         </div>
         <div class="col-md-6">
-            <select name="dept<?php echo $i; ?>" id="dept<?php echo $i; ?>" required>
-                <option value="1">Mechanical Engineering</option>
-                <option value="2">Civil Engineering</option>
-                <option value="3">Electrical Engineering </option>
-                <option value="4">Industrial Electronics</option>
-                <option value="5">Computer Engineering</option>
+            <select name="dept[<?php echo $i; ?>]['name']" id="dept<?php echo $i; ?>" required>
+                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                <option value="Civil Engineering">Civil Engineering</option>
+                <option value="Electrical Engineering">Electrical Engineering </option>
+                <option value="Industrial Electronics">Industrial Electronics</option>
+                <option value="Computer Engineering">Computer Engineering</option>
             </select>
         </div>
     </div>
