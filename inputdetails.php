@@ -8,6 +8,17 @@ else
 {
     header('location: index.php');
 }
+$startdate = new DateTime($_POST['startdate']);
+$enddate = new DateTime($_POST['enddate']);
+
+if($enddate<$startdate)
+{
+  ?>
+      <script>
+        window.location.replace("inputnumbers.php?errmsg=Examination start date must precede end date!!!");
+      </script>
+    <?php
+}
 /* Start of the form */
 ?>
 <form action="checkdetails.php" method="POST" enctype="multipart/form-data">
