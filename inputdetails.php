@@ -37,7 +37,7 @@ for($i=0; $i<$no_depts; $i++)
             Select Department
         </div>
         <div class="col-md-6">
-            <select name="dept[<?php echo $i; ?>]['name']" id="dept<?php echo $i; ?>" required>
+            <select name="dept[<?php echo $i; ?>]" id="dept<?php echo $i; ?>" required>
                 <option value="Mechanical Engineering">Mechanical Engineering</option>
                 <option value="Civil Engineering">Civil Engineering</option>
                 <option value="Electrical Engineering">Electrical Engineering </option>
