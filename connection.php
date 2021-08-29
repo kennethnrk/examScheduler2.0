@@ -1,6 +1,6 @@
 <?php session_start();
 
-$con=mysqli_connect("localhost","root","","exam_scheduler2.0");
+$con=mysqli_connect("localhost","root","","exam_scheduler");
 
 
 ?>
