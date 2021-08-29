@@ -17,6 +17,12 @@ $sql = "TRUNCATE TABLE `slots`";
 mysqli_query($con, $sql);
 $sql = "TRUNCATE TABLE `seats`";
 mysqli_query($con, $sql);
+$sql = "TRUNCATE TABLE `departments`";
+mysqli_query($con, $sql);
+$sql = "TRUNCATE TABLE `halls`";
+mysqli_query($con, $sql);
+$sql = "TRUNCATE TABLE `subslots`";
+mysqli_query($con, $sql);
 
 $files = glob('files/*'); // get all file names
 foreach($files as $file){ // iterate files
