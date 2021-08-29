@@ -369,7 +369,7 @@ for($i=0;$i<$_POST['no_courses'];$i++)
 ?>
 
 <script>
-//window.location.replace("viewschedule.php");
+window.location.replace("viewschedule.php");
 </script>
 <?php
 require("bottom.php");
