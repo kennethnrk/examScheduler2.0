@@ -9,7 +9,7 @@ $con=mysqli_connect("localhost","root","","exam_scheduler");
 function pr($arr){
     echo '<pre>';
     print_r($arr);
-    echo '</pr>' ;
+    echo '</pre>' ;
 }
 
 function prx($arr){
