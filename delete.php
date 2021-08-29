@@ -1,5 +1,11 @@
 <?php
 require ('connection.php');
+$msg = '';
+if(isset($_GET['errmsg'] )&& $_GET['errmsg'] !== null)
+{
+    $msg = '?errmsg='.$_GET['errmsg'];
+}
+
 
 $sql = "TRUNCATE TABLE `student_list`";
 mysqli_query($con, $sql);
@@ -19,5 +25,5 @@ foreach($files as $file){ // iterate files
   }
 }
 
-header("location: inputnumbers.php");
+header("location: inputnumbers.php".$msg);
 ?>

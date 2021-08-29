@@ -2,18 +2,11 @@
 
 require ("top.php");//including header file
 $msg = '';
-if(isset($_GET['err'] )&& $_GET['err']==0)
+if(isset($_GET['errmsg'] )&& $_GET['errmsg'] !== null)
 {
-    $msg = 'Please use .csv files only!';
+    $msg = $_GET['errmsg'];
 }
-if(isset($_GET['err'] )&& $_GET['err']==1)
-{
-    $msg = 'Error: Courses don\'t match specified format!! ';
-}
-if(isset($_GET['err'] )&& $_GET['err']==2)
-{
-    $msg = 'Error: Students don\'t match specified format!!';
-}
+
 /* Checking to see if existing exmas have been scheduled */
 $sql = "Select * from exams";
 $res = mysqli_query($con,$sql);
@@ -45,24 +38,7 @@ if (mysqli_num_rows($res) > 0 || sizeof($files)>0) {
     </div>
     
     <form action="inputdetails.php" method="POST" enctype="multipart/form-data">
-    <!--
-    <div class="row toprow">
-        <div class="col-md-6 label">
-            List of Courses:
-        </div>
-        <div class="col-md-6">
-            <input type="file"  name="courses" id="courses" required>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6 label">
-            List of Students:
-        </div>
-        <div class="col-md-6">
-            <input type="file"  name="students" id="students" required>
-        </div>
-    </div>
-     -->
+    
      <div class="row toprow">
         <div class="col-md-6 label">
             Number of Departments:
@@ -91,13 +67,7 @@ if (mysqli_num_rows($res) > 0 || sizeof($files)>0) {
         </div>
 
     </div>
-    <div class="row">
-        <div class="col-md-12">
-    <div class="field_error">
-                        <?php echo $msg ?>
-                     </div>
-        </div>
-    </div>
+    
     <div class="row">
         <div class="col-md-6 label">
             Choose Term
@@ -107,6 +77,13 @@ if (mysqli_num_rows($res) > 0 || sizeof($files)>0) {
             <option value="odd">ODD</option>
              <option value="even">EVEN</option>
         </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="field_error">
+                <?php echo $msg ?>
+            </div>
         </div>
     </div>
     <div class="row">
