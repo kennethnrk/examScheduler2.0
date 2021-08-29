@@ -139,11 +139,12 @@ if(in_array($_FILES['courses'.$b]['type'], $csv_mimetypes))//checking courses fi
       }
       die();
   }
-  for($i=1, $q=0;$i<(sizeof($array_courses));$i++)
+  for($i=1 ;$i<(sizeof($array_courses));$i++)
   {
       if((sizeof($array_courses[$i])==6) && ($array_courses[$i][1]!==null && $array_courses[$i][2]!== null) && (intval($array_courses[$i][3])%2==$term_identifier) && (intval($array_courses[$i][4])==1) && (intval($array_courses[$i][5]) <=100 && intval($array_courses[$i][5]) >0) )
       {
-          $_SESSION['POST']['course'][$q]['name'] = $array_courses[$i][1];
+          $_SESSION['POST']['course'][]['name'] = $array_courses[$i][1];
+          $q = sizeof($_SESSION['POST']['course'])-1;
           $_SESSION['POST']['course'][$q]['code'] = $array_courses[$i][2];
           $_SESSION['POST']['course'][$q]['sem'] = intval($array_courses[$i][3]);
           $_SESSION['POST']['course'][$q]['dur'] = intval($array_courses[$i][4]);
@@ -152,7 +153,6 @@ if(in_array($_FILES['courses'.$b]['type'], $csv_mimetypes))//checking courses fi
           
           $_SESSION['POST']['course'][$q]['dept'] = $_POST['dept'][$b];
 
-          $q++;
       }
       
   }
@@ -223,7 +223,7 @@ if(in_array($_FILES['students'.$b]['type'], $csv_mimetypes))
       }
       die();
   }
-  for($i=1, $q=0;$i<(sizeof($array_students));$i++)
+  for($i=1 ;$i<(sizeof($array_students));$i++)
   {//checking for null values and correct number of columns
       if((sizeof($array_students[$i])==4) && ($array_students[$i][2] !== null && $array_students[$i][1] !== null &&$array_students[$i][3] !== null))
       {
@@ -259,13 +259,14 @@ if(in_array($_FILES['students'.$b]['type'], $csv_mimetypes))
             //if student dosen't exist create new studen with the relevant data
             if($student_allot==false)
             {
-              $_SESSION['POST']['student'][$q]['name'] = $array_students[$i][2];
+              $_SESSION['POST']['student'][]['name'] = $array_students[$i][2];
+              $q = sizeof($_SESSION['POST']['student'])-1;
               $_SESSION['POST']['student'][$q]['enroll'] = $array_students[$i][1];
               $_SESSION['POST']['student'][$q]['courses'][] = $array_students[$i][3];
                         
               $_SESSION['POST']['student'][$q]['dept'] = $_POST['dept'][$b];
 
-              $q++;
+              
               $_SESSION['POST']['no_students'] ++;
               
             }
