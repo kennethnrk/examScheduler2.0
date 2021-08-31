@@ -41,6 +41,7 @@ if (mysqli_num_rows($res) > 0) {
         <tr class="table_head">
             <th>No.</th>
             <th>Name</th>
+            <th>Department</th>
             <th>Semester</th>
             <th>Duration</th>
             <th>Marks</th>
@@ -57,6 +58,7 @@ if (mysqli_num_rows($res) > 0) {
             <tr >
                 <td class="viewfullcourse"><a class="viewfullcourse" href="viewseating.php?courseid=<?php echo $course_list[$i]['id']; ?>"><?php echo $i+1; ?></a></td>
                 <td class="viewfullcourse"><a class="viewfullcourse" href="viewseating.php?courseid=<?php echo $course_list[$i]['id']; ?>"><?php echo $course_list[$i]['name']; ?></a></td>
+                <td class="viewfullcourse"><a class="viewfullcourse" href="viewseating.php?courseid=<?php echo $course_list[$i]['id']; ?>"><?php echo explode(' ',trim($course_list[$i]['Dept']))[0]; ?></a></td>
                 <td class="viewfullcourse"><a class="viewfullcourse" href="viewseating.php?courseid=<?php echo $course_list[$i]['id']; ?>"><?php echo $course_list[$i]['Semester']; ?></a></td>
                 <td class="viewfullcourse"><a class="viewfullcourse" href="viewseating.php?courseid=<?php echo $course_list[$i]['id']; ?>"><?php echo $course_list[$i]['Duration']; ?>Hr</a></td>
                 <td class="viewfullcourse"><a class="viewfullcourse" href="viewseating.php?courseid=<?php echo $course_list[$i]['id']; ?>"><?php echo $course_list[$i]['Marks']; ?></a></td>
