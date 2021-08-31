@@ -152,11 +152,12 @@ class Calendar {
             if(sizeof($course_list)>2)
             {
                 $this->examlist = ''; 
-            for($k=0;$k<2;$k++)
-            {
-                $this->examlist .= '<div class="exam"><a class="examlink" href="viewseating.php?courseid='.$course_list[$k]['id'].'">'.$course_list[$k]['name'].'</a></div>';
-            }
-            $this->examlist .= '<div class="exam dk"><a class="examlink" href="viewfullschedule.php?date='.$this->currentDate.'">View All</a></div>';
+                for($k=0;$k<2;$k++)
+                {
+                    $this->examlist .= '<div class="exam"><a class="examlink" href="viewseating.php?courseid='.$course_list[$k]['id'].'">'.$course_list[$k]['name'].'</a></div>';
+                    
+                }
+                $this->examlist .= '<div class="exam dk"><a class="examlink" href="viewfullschedule.php?date='.$this->currentDate.'">View All</a></div>';
             }
             else if(sizeof($course_list)<=2)
             {
@@ -164,6 +165,11 @@ class Calendar {
             for($k=0;$k<sizeof($course_list);$k++)
             {
                 $this->examlist .= '<div class="exam"><a class="examlink" href="viewseating.php?courseid='.$course_list[$k]['id'].'">'.$course_list[$k]['name'].'</a></div>';
+                if(str_word_count($course_list[$k]['name'])>1 || str_word_count($course_list[$k+1]['name'])>1)
+                {
+                    $this->examlist .= '<div class="exam dk"><a class="examlink" href="viewfullschedule.php?date='.$this->currentDate.'">View All</a></div>';
+                    break;
+                }
             }
             
             }
