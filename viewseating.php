@@ -1,6 +1,6 @@
 <?php 
-include ('top.php');
-if(!(isset($_GET['courseid'])))
+include ('top.php');//including header file
+if(!(isset($_GET['courseid'])))//checking if course id has been passed
 {
     ?><div class="heading">
         No Slots assigned!!!
@@ -8,17 +8,17 @@ if(!(isset($_GET['courseid'])))
     die();
 }
 $course_id = get_safe_value($con, $_GET['courseid']);
-$sql = "Select * from slots where `course_id` =".$course_id;
-$res = mysqli_query($con,$sql);
+$sql = "Select * from slots where `course_id` =".$course_id;//selecting slots which have matching course id(these slots have been assigned to this particular course)
+$res = mysqli_query($con,$sql);//results of the query stored in $res array
 $slot_rows = array();
 if (mysqli_num_rows($res) > 0) {
-    while($row = mysqli_fetch_assoc($res)) {
+    while($row = mysqli_fetch_assoc($res)) {//fetching each row in the result of the query
                  
-        array_push($slot_rows,$row);
+        array_push($slot_rows,$row); //pushing individual rows to an array containing a list of all the rows
       
   }
 }
-$sql = "Select * from course_list where `id` =".$course_id;
+$sql = "Select * from course_list where `id` =".$course_id;//querying course list, refer above process of querying slots
 $res = mysqli_query($con,$sql);
 $course_rows = array();
 if (mysqli_num_rows($res) > 0) {
@@ -28,14 +28,14 @@ if (mysqli_num_rows($res) > 0) {
       
   }
 }
-if(sizeof($slot_rows)==null)
+if(sizeof($slot_rows)==null)//no slots found that match given course id
 {
     ?><div class="heading">
         No Slots assigned!!!
     </div><?php
 }
 else 
-{
+{   //outputing details of the first slot(details of all slots will be same in case of only one course, hence only outputing first slot)
     ?>
     <div class="container cont seating_top">
         <div class="row seating_top_row1">
@@ -68,8 +68,8 @@ else
     </div>  
     <?php
     
-      for($j=0;$j<sizeof($slot_rows);$j++)
-        {
+      for($j=0;$j<sizeof($slot_rows);$j++)//loop to print all the slots(halls)
+        {//querying seating data from seats table, refer earlier queries.
             $sql = "Select * from seats where `slot_id` =".$slot_rows[$j]['id']." order by `seat_no` asc";
             $res = mysqli_query($con,$sql);
             $seat_rows = array();
@@ -92,7 +92,7 @@ else
                 </div>
             </div>
             <div class="row maintop">
-                <?php for($i = 0; $i<sizeof($seat_rows);$i++) {
+                <?php for($i = 0; $i<sizeof($seat_rows);$i++) {//loop to print all the seating details in this particular slot
                     if($i!=0 && $i/3 == 0)
                     {
                         ?></div> <div class="row"> <?php
@@ -119,7 +119,7 @@ else
                                     Enroll No:
                                 </div>
                                 <div class="col-xs-8 col-md-6">
-                                <?php 
+                                <?php //querying student details belonging to this particular seat in the particular hall(slot)
                                 $sql = "Select * from student_list where `id` =".$seat_rows[$i]['student_id'];
                                 $res = mysqli_query($con,$sql);
                                 $student = mysqli_fetch_assoc($res);
@@ -141,5 +141,5 @@ else
 ?>
 
 <?php 
-include ('bottom.php');
+include ('bottom.php');//including footer file
 ?>
