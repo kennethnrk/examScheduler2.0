@@ -7,14 +7,15 @@ if(!(isset($_GET['courseid'])))//checking if course id has been passed
     </div><?php
     die();
 }
+$subslot_rows = array();
 $course_id = get_safe_value($con, $_GET['courseid']);
-$sql = "Select * from slots where `course_id` =".$course_id;//selecting slots which have matching course id(these slots have been assigned to this particular course)
+$sql = "SELECT * from `subslots` where `course_id` =".$course_id;//selecting slots which have matching course id(these slots have been assigned to this particular course)
 $res = mysqli_query($con,$sql);//results of the query stored in $res array
-$slot_rows = array();
+
 if (mysqli_num_rows($res) > 0) {
     while($row = mysqli_fetch_assoc($res)) {//fetching each row in the result of the query
                  
-        array_push($slot_rows,$row); //pushing individual rows to an array containing a list of all the rows
+        $subslot_rows[] = $row; //pushing individual rows to an array containing a list of all the rows
       
   }
 }
@@ -28,7 +29,7 @@ if (mysqli_num_rows($res) > 0) {
       
   }
 }
-if(sizeof($slot_rows)==null)//no slots found that match given course id
+if(sizeof($subslot_rows)==null)//no slots found that match given course id
 {
     ?><div class="heading">
         No Slots assigned!!!
@@ -36,6 +37,24 @@ if(sizeof($slot_rows)==null)//no slots found that match given course id
 }
 else 
 {   //outputing details of the first slot(details of all slots will be same in case of only one course, hence only outputing first slot)
+    
+    $slot_rows = array();
+    for ($i=0; $i <sizeof($subslot_rows) ; $i++) 
+    { 
+        $slot_id=$subslot_rows[$i]['slot_id'];
+            $sql = "Select * from slots where `id` =".$slot_id;//selecting slots which have matching course id(these slots have been assigned to this particular course)
+            $res = mysqli_query($con,$sql);//results of the query stored in $res array
+            
+            if (mysqli_num_rows($res) > 0) 
+            {
+                while($row = mysqli_fetch_assoc($res)) 
+                {//fetching each row in the result of the query
+                    
+                    array_push($slot_rows,$row); //pushing individual rows to an array containing a list of all the rows
+        
+                }
+            }
+    }
     ?>
     <div class="container cont seating_top">
         <div class="row seating_top_row1">
@@ -52,7 +71,7 @@ else
         </div>
         <div class="row seating_top_row2">
             <div class="col-md-3">
-                Course Name: <?php echo $slot_rows[0]['Course_name']; ?>
+                Course Name: <?php echo $course_rows[0]['name']; ?>
             </div>
             <div class="col-md-3">
                 Semester: <?php echo $course_rows[0]['Semester']; ?>
@@ -65,34 +84,222 @@ else
             </div>
         </div>
         
-    </div>  
+    </div> 
     <?php
+    $hall_rows = array();
+    for($i=0; $i <sizeof($slot_rows) ; $i++)
+    {
+        $sql = "Select * from halls where `id` =".$slot_rows[$i]['hall_id'];
+        $res = mysqli_query($con,$sql);
+        
+        if (mysqli_num_rows($res) > 0) 
+        {
+            while($row = mysqli_fetch_assoc($res)) 
+            {
+                                        
+                array_push($hall_rows,$row);
+                            
+            }
+        }
+    }
+    
     
       for($j=0;$j<sizeof($slot_rows);$j++)//loop to print all the slots(halls)
         {//querying seating data from seats table, refer earlier queries.
-            $sql = "Select * from seats where `slot_id` =".$slot_rows[$j]['id']." order by `seat_no` asc";
+            
+            
+            $sql = "Select * from halls where `id` =".$slot_rows[$j]['hall_id'];
             $res = mysqli_query($con,$sql);
-            $seat_rows = array();
-            if (mysqli_num_rows($res) > 0) {
-                while($row = mysqli_fetch_assoc($res)) {
-                            
-                    array_push($seat_rows,$row);
-                
-            }
+            if (mysqli_num_rows($res) == 1) {
+                $hall_row = mysqli_fetch_assoc($res);
+                $hall_no = $hall_row['room_no'];
+                $no_benches = $hall_row['no_benches'];
+                $bench_seats = $hall_row['bench_seats'];
             }
             else
             {
-            echo "error";
-            }
+                continue;
+            }  
+                $subslot_rows=array();
+            
+                $slot_id=$slot_rows[$j]['id'];
+                
+                $sql = "Select * from subslots where `slot_id` =".$slot_id;//selecting slots which have matching course id(these slots have been assigned to this particular course)
+                $res = mysqli_query($con,$sql);//results of the query stored in $res array
+                if (mysqli_num_rows($res) > 0) {
+                    while($row = mysqli_fetch_assoc($res)) {//fetching each row in the result of the query
+                        
+                        array_push($subslot_rows,$row); //pushing individual rows to an array containing a list of all the rows
+            
+                    }
+                }
+                $seat_rows = array();
+                for($p=0;$p<sizeof($subslot_rows);$p++)
+                {
+                    $sql = "Select * from seats where `subslot_id` =".$subslot_rows[$p]['id']." order by `seat_no` asc";
+                    $res = mysqli_query($con,$sql);
+                    $seat_rows[$p] = array();
+                    if (mysqli_num_rows($res) > 0) {
+                        while($row = mysqli_fetch_assoc($res)) {
+                                    
+                            array_push($seat_rows[$p],$row);
+                        
+                    }
+                    }
+                    else
+                    {
+                    echo "error";
+                    }
+                }
+                if(sizeof($seat_rows)>$bench_seats)   
+                {
+                    continue;
+                }
+                if(sizeof($seat_rows)==1)   
+                {
+                    $size_factor = 12;
+                }
+                elseif(sizeof($seat_rows)==2)
+                {
+                    $size_factor = 6;
+                }
+                elseif(sizeof($seat_rows)==3)
+                {
+                    $size_factor = 4;
+                }
         ?>
+        <div class="container cont">
+        <div class="row ">
+                <div class="col-xs-12 heading positive">
+                    Please Note: Only seats coloured in green belong to selected course!!
+                </div>
+            </div>
+        </div>
+
         <div class="container cont">
             <div class="row ">
                 <div class="col-xs-12 heading">
-                    Exam Hall No. <?php echo $slot_rows[$j]['hall_no']; ?>
+                    Exam Hall No. <?php 
+                   echo $hall_no ;
+                     ?>
                 </div>
             </div>
+            
             <div class="row maintop">
-                <?php for($i = 0; $i<sizeof($seat_rows);$i++) {//loop to print all the seating details in this particular slot
+                <?php 
+                for($q=0;$q<$no_benches;$q++)
+                {
+                ?>
+                <div class="col-md-6 bench">
+                    <div class="row">
+                        <?php
+                        
+                        for($p=0;$p<sizeof($subslot_rows);$p++)
+                        {
+                            if(isset($seat_rows[$p][$q]['seat_no']))
+                            {
+                            ?>
+                            <div class="col-md-<?php echo $size_factor; ?>">
+                                    <div class="row ">
+                                        <div class="col-xs-12 ">
+                                            <?php
+                                            $color_picker = "";
+                                            if($subslot_rows[$p]['course_id']==$course_id)
+                                            {
+                                                $color_picker = 'positive';
+                                            ?>
+                                                <img src="img/seatnewer.png "  class="seatimg">
+                                            <?php
+                                            }
+                                            else
+                                            {
+                                                ?><img src="img\seatneweryellow.png "  class="seatimg"><?php
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <div class="row seatinfo <?php echo $color_picker;?>">
+                                        <div class="col-xs-12">
+                                            <div class="row">
+                                                <div class="col-xs-6">
+                                                    Seat No:
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <?php echo $seat_rows[$p][$q]['seat_no']; ?>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    Enroll No:
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                <?php //querying student details belonging to this particular seat in the particular hall(slot)
+                                                $sql = "Select * from student_list where `id` =".$seat_rows[$p][$q]['student_id'];
+                                                $res = mysqli_query($con,$sql);
+                                                $student = mysqli_fetch_assoc($res);
+                                                echo $student['enrollment_no'];
+                                                ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php
+                            }
+                            else
+                            {
+                                ?>
+                                <div class="col-md-<?php echo $size_factor; ?>">
+                                        <div class="row ">
+                                            <div class="col-xs-12 ">
+                                                <?php
+                                                $color_picker = "";
+                                                if($subslot_rows[$p]['course_id']==$course_id)
+                                                {
+                                                    $color_picker = 'positive';
+                                                ?>
+                                                    <img src="img/seatnewer.png "  class="seatimg">
+                                                <?php
+                                                }
+                                                else
+                                                {
+                                                    ?><img src="img\seatneweryellow.png "  class="seatimg"><?php
+                                                }
+                                                ?>
+                                            </div>
+                                        </div>
+                                        <div class="row seatinfo <?php echo $color_picker;?>">
+                                            <div class="col-xs-12">
+                                                <div class="row">
+                                                    <div class="col-xs-6">
+                                                        Seat No:
+                                                    </div>
+                                                    <div class="col-xs-6">
+                                                        --
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        Enroll No:
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                    --
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php 
+                            }
+                        }
+                        ?>
+                    </div>
+                    <?php
+                /* for($i = 0; $i<sizeof($seat_rows);$i++) {//loop to print all the seating details in this particular slot
                     if($i!=0 && $i/3 == 0)
                     {
                         ?></div> <div class="row"> <?php
@@ -130,8 +337,11 @@ else
                         </div>
                     </div>
                 </div>
+                <?php }*/?>
+                    </div>
                 <?php }?>
-            </div>
+                </div>
+           
         </div>    
         
     <?php

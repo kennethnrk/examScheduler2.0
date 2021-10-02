@@ -257,7 +257,7 @@ input[type=text], input[type=password], input[type=number], select, input[type=d
 .seating_top
 {
     
-    color: #c9a500;
+    color: #2bb673;
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
     font-size: 3.5vh;
@@ -267,7 +267,7 @@ input[type=text], input[type=password], input[type=number], select, input[type=d
 }
 .seating_top_row1
 {
-    border-bottom: 0.5vh solid #c9a500;
+    border-bottom: 0.5vh solid #2bb673;
     padding-bottom: 3vh;
     padding-top: 2vh;
 }
@@ -289,6 +289,13 @@ input[type=text], input[type=password], input[type=number], select, input[type=d
 .seatinfo
 {
     border: 0.5vh solid #c9a500;
+    border-radius: 1vw;
+    margin-left: 1vh;
+    margin-right: 1vh;
+}
+.seatinfo.positive
+{
+    border: 0.5vh solid #2bb673;
     border-radius: 1vw;
     margin-left: 1vh;
     margin-right: 1vh;
@@ -329,4 +336,13 @@ input[type=text], input[type=password], input[type=number], select, input[type=d
     margin-top: 10vh;
     padding-left: 0;
     padding-right: 0;
+}
+.bench
+{
+    border-radius: 2vw;
+    border:0.5vh solid #2bb673;
+}
+.heading.positive
+{
+    color: #2bb673;
 }
