@@ -3,7 +3,7 @@
 
     This exam scheduler was designed keeping in mind the faculty point of view.
 The faculty logs in and inputs the required data regarding the examination. 
-On submission of this data, the faculty id redirected to the page on which, 
+On submission of this data, the faculty is redirected to the page on which, 
 the schedule of the exa is displayed onto a calendar. On clicking any of the courses, 
 the user(faculty) is redirected to the page that will display the seating arrangement of that particular course.
 This seating arrangement is displayed in agraphical manner. The student details are displayed, 
