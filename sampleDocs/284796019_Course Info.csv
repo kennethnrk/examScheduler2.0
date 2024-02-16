@@ -1,0 +1,24 @@
+﻿Sr. No,Course Name,Course Code,semester,Duration,marks
+1,Communication Skills,A18BS01,1,1,100
+2,Basic Mathematics,A18BS06,1,1,100
+3,Physics-1,A18BS03,1,1,100
+4,Communication Practice,A18BS03,2,1,100
+5,Physics-2,A18BS03,2,1,100
+6,Applied Mathematics,A18BS03,2,1,100
+7,Programming in C,O18BB11,2,1,100
+8,OOPS using C++,O18BB12,3,1,100
+9,Computer Networking,O18BC18,3,1,100
+10,Digital Electronics,O18BB09,3,1,100
+11,Engineering Mathematics,O18BS08,3,1,100
+12,Computer Organization,O18RA25,3,1,100
+13,Core Java,O18RA22,4,1,100
+14,Operating Systems,O18RC21,4,1,100
+15,Data Structures,O18BB13,4,1,100
+16,Microprocessor,O18RC14,4,1,100
+17,Database Management Systems, O18RC14,4,1,100
+18,Linux and Network Administration,O18RC17,5,1,100
+19,Advanced Java,O18RA23,5,1,100
+20,software Engineering,O18RA28,5,1,100
+21,Management,O18RM01,6,1,100
+22,Advanced database,O18RC20,6,1,100
+23,System Security,O18RA29,6,1,100
